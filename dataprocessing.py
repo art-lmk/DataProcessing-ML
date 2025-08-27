@@ -57,14 +57,14 @@ Look for missing or weird values - Any blanks, duplicates, or outliers?
 
 Summarize - Mean, median, min, max, etc. for numeric columns.
 
-Visualize  Draw charts (histograms, boxplots, scatterplots) to see patterns.
+Visualize  - Draw charts (histograms, boxplots, scatterplots) to see patterns.
 
 In short, EDA is like getting to know your dataset before you trust it.
 """
 
 #EDA
 #Descriptive statistics
-df.describe()
+df.describe() #checks how our data looks like
 
 #for object analysis(non-numerical data analysis)
 df.describe(include='object')
@@ -112,17 +112,17 @@ imputer = KNNImputer()
 for i in df.select_dtypes(include="number").columns:
     df[i] = imputer.fit_transform(df[[i]])
 
-#lets check whether the missing values have been replaced
+#let's check whether the missing values have been replaced
 
 df.isnull().sum()
 
 """Outlier treatments
 
-An outlier is an extreme spot/value where there an upper side or the lower side of data.
-This treatment is used in discrete variables only.
+An outlier is an extreme spot/value where there is an upper side or the lower side of data.
+This treatment is used in discrete/continous variables only.
 """
 
-#lets define a wisker function
+#let's define a wisker function
 
 def wisker(col):
     q1,q3=col.quantile([0.25,0.75])
